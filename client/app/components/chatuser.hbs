@@ -1,1 +1,43 @@
-{{!-- {{yield}} --}}
+{{#if this.userName}}
+<div class="container">
+
+    <div class="chat-container">
+        <div class="messages-list">
+            <ul>
+                {{#each this.messages as |message|}}
+                <li>
+                    <span class="messages-list__message__user-name">{{message.userName}}:</span>
+                    <span>{{message.text}}</span>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="users-list">
+            <h4>Користувачі:</h4>
+            <ul>
+                {{#each this.users as |user|}}
+                <li>
+                    <div class="users-list__user-name">{{user}}</div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="actions-container">
+
+        <form class="input-container" {{on 'submit' this.onSendMessage}}>
+            <div>
+
+                <textarea class="input-container__textarea" autofocus required defaultvalue=''></textarea>
+            </div>
+            <div class="button-container">
+                <button class="button-container__button" type="submit">Відправити</button>
+            </div>
+        </form>
+
+    </div>
+
+
+</div>
+{{/if}}
